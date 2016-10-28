@@ -1,0 +1,12 @@
+* Dotfiles
+
+Here are my personal configuration files for various and useful linux tools I use daily.
+
+* Content
+
+| File name (real file name) | Description                                                |
+|----------------------------+------------------------------------------------------------|
+| spacemacs (.spacemacs)     | spacemacs configuration file                               |
+| tmux.conf (.tmux.conf)     | tmux (terminal multiplexer) configuration file             |
+| zshrc (.zshrc)             | zsh configuration file (using OhMyZsh)                     |
+| i3                         | i3 (tiling window manager) configuration files and scripts |
