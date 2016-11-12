@@ -50,52 +50,28 @@ ZSH_THEME="honukai"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-url-highlighter)
+plugins=(git zsh-syntax-highlighting zsh-url-highlighter solarized-man)
+
+# Github links to zsh plugins
+# Solarized-man (optimize man pages for solarized dark theme) https://github.com/zlsun/solarized-man
+
 
 # User configuration
 
-  export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/home/lturpinat/.local/bin:/home/lturpinat/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/home/lturpinat/.local/bin:/home/lturpinat/bin"
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Aliases
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-
-
-# unset SSH_ASKPASS
-
-# Aliasses
-
-alias transmission='transmission-remote-cli'
-alias scenebuilder='/opt/SceneBuilder/SceneBuilder'
-alias intellij='/opt/IntelliJ_idea/intellij_font.sh'
-
+eval $(thefuck --alias)
+alias speedtest='/opt/speedtest-cli/speedtest_cli.py'
+alias discord='/opt/DiscordCanary/DiscordCanary'
+#alias transmission='transmission-remote-cli'
 alias emacsclient="emacsclient --alternate-editor="" -c "$@""
 
 # Exports
 export LANG=en_US.UTF-8
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"                  # $EDITOR should open in terminal
-export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI with non-daemon as alternate
+export EDITOR="emacsclient -t"
+export VISUAL="emacsclient -c -a emacs"
