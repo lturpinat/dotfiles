@@ -2,6 +2,8 @@
 
 Here are my personal configuration files for various and useful linux tools I use daily.
 
+[[./screenshot.png][]]
+
 * Content
 
 | File name (real file name) | Description                                                |
