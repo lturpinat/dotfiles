@@ -10,3 +10,6 @@ Here are my personal configuration files for various and useful linux tools I us
 | tmux.conf (.tmux.conf)     | tmux (terminal multiplexer) configuration file             |
 | zshrc (.zshrc)             | zsh configuration file (using OhMyZsh)                     |
 | i3                         | i3 (tiling window manager) configuration files and scripts |
+| config                     | xfce4's, applications' and autostarts' configuration files |
+| portage                    | contains make.conf and package.use files                   |
+| X11                        | x11's configuration files                                  |
