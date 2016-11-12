@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -55,7 +54,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -301,6 +300,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+
 ;; Weather with wttrin
 
 (setq wttrin-default-cities '("Clermont-Ferrand"))
@@ -328,6 +328,23 @@ you should place your code here."
 
 ;; Week start with Monday
 (setq calendar-week-start-day 1)
+
+;; Multiple cursors shortcuts
+(global-set-key (kbd "C-c m c") 'set-rectangular-region-anchor) ;; Create a rectangular region (multiple-cursors)
+(global-set-key (kbd "C-c m x") 'mc/mark-next-like-this) ;; Select next occurrence of the primary selected region
+(global-set-key (kbd "C-c m w") 'mc/mark-all-like-this) ;; Same thing but everywhere in the buffer
+
+;; ace-jump-mode shortcuts
+(global-set-key (kbd "C-c m q") 'ace-jump-mode)
+
+;; Enabling linum-mode (display line numbers on the left bar) globally
+;; (global-linum-mode 1)
+
+;; Enable hlinum which hightlights current line number of linum-mode
+(hlinum-activate)
+
+;; Disable right-click pop-up menu
+(fset 'menu-bar-open nil)
 
   )
 
