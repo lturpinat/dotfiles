@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -334,8 +335,11 @@ you should place your code here."
 (global-set-key (kbd "C-c m x") 'mc/mark-next-like-this) ;; Select next occurrence of the primary selected region
 (global-set-key (kbd "C-c m w") 'mc/mark-all-like-this) ;; Same thing but everywhere in the buffer
 
-;; ace-jump-mode shortcuts
-(global-set-key (kbd "C-c m q") 'ace-jump-mode)
+;; ace-jump-mode shortcut
+(global-set-key (kbd "C-c a") 'ace-jump-mode)
+
+;; magit shortcut
+(global-set-key (kbd "C-c g") 'magit-status)
 
 ;; Enabling linum-mode (display line numbers on the left bar) globally
 ;; (global-linum-mode 1)
