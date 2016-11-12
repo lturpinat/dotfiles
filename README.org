@@ -2,7 +2,7 @@
 
 Here are my personal configuration files for various and useful linux tools I use daily.
 
-[[./screenshot.png][]]
+[[./screenshot.png]]
 
 * Content
 
