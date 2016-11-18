@@ -56,7 +56,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -342,6 +342,15 @@ you should place your code here."
 ;; magit shortcut
 (global-set-key (kbd "C-c g") 'magit-status)
 
+;; search&replace shortcuts
+(global-set-key (kbd "C-c ù") 'query-replace)
+(global-set-key (kbd "C-c C-ù") 'query-replace-regexp)
+
+;; helm-dash shortcuts
+(global-set-key (kbd "C-c d") 'helm-dash)
+(global-set-key (kbd "C-c C-d") 'helm-dash-activate-docset)
+
+
 ;; Enabling linum-mode (display line numbers on the left bar) globally
 ;; (global-linum-mode 1)
 
@@ -350,6 +359,9 @@ you should place your code here."
 
 ;; Disable right-click pop-up menu
 (fset 'menu-bar-open nil)
+
+;; When using helm-dash, open "eww" to read doc
+(setq helm-dash-browser-func 'eww)
 
   )
 
