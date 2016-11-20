@@ -1,4 +1,3 @@
-;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -52,11 +51,15 @@ values."
      ;; syntax-checking
      ;; version-control
      )
-   ;; List of additional packages that will be installed without being
-   ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
+
+
+   ;; ########### PACKAGES ###########
+
+   ;; list of additional packages that will be installed without being
+   ;; wrapped in a layer. if you need some configuration for these
+   ;; packages, then consider creating a layer. you can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -304,8 +307,8 @@ you should place your code here."
 
 
 ;; ########### GENERAL-EMACS ###########
-;; Disable right-click pop-up menu
-(fset 'menu-bar-open nil)
+
+(fset 'menu-bar-open nil) ;; Disable right-click pop-up menu
 
 
 ;; ########### WTTRIN ###########
@@ -322,9 +325,7 @@ you should place your code here."
 ;; (setq org-default-notes-file (concat org-directory "/Capture.org"))
 ;; (define-key global-map "\C-cc" 'org-capture)
 
-;; Enable by default "org-indent-mode"
-
-(setq org-startup-indented t)
+(setq org-startup-indented t) ;; Enable by default "org-indent-mode"
 
 ;; Set calandar with french names
 (setq calendar-week-start-day 1
@@ -334,19 +335,18 @@ you should place your code here."
                                  "Juin" "Juillet" "Août" "Septembre"
                                  "Octobre" "Novembre" "Décembre"])
 
-;; Set date format "dd/mm/yy" in general and for org-mode
-(setq european-calendar-style t)
+(setq european-calendar-style t) ;; Set date format "dd/mm/yy" in general and for org-mode
 
-;; Week start with Monday
-(setq calendar-week-start-day 1)
+(setq calendar-week-start-day 1) ;; Week start with Monday
 
 
 ;; ########### ISPELL ###########
 
-;; Set ispell to french
-(setq ispell-dictionary "francais")
+(setq ispell-dictionary "francais") ;; Set ispell to french
 
+
 ;; ########### Multiple cursors shortcuts ###########
+
 (global-set-key (kbd "C-c m c") 'set-rectangular-region-anchor) ;; Create a rectangular region (multiple-cursors)
 (global-set-key (kbd "C-c m x") 'mc/mark-next-like-this) ;; Select next occurrence of the primary selected region
 (global-set-key (kbd "C-c m w") 'mc/mark-all-like-this) ;; Same thing but everywhere in the buffer
@@ -372,33 +372,48 @@ you should place your code here."
 ;; yasnippet minor-mode shortcut
 (global-set-key (kbd "C-c y") 'yas-minor-mode)
 
+;; expand-region shortcut
+(global-set-key (kbd "C-c v") 'er/expand-region)
+
+;; iedit-mode shortcut
+(global-set-key (kbd "C-c ;") 'iedit-mode)
+
 
 ;; ########### LINUM(HLINUL)-MODE ###########
-;; Enabling linum-mode (display line numbers on the left bar) globally
-;; (global-linum-mode 1)
 
-;; Enable hlinum which hightlights current line number of linum-mode
-(hlinum-activate)
+;; (global-linum-mode 1) ;; Enabling linum-mode (display line numbers on the left bar) globally
+
+(hlinum-activate) ;; Enable hlinum which hightlights current line number of linum-mode
 
 
 ;; ########### HELM-DASH ###########
 
-;; When using helm-dash, open "eww" to read doc
-(setq helm-dash-browser-func 'eww)
+(setq helm-dash-browser-func 'eww) ;; When using helm-dash, open "eww" to read doc
 
 
 ;; ########### YASNIPPET ###########
 
-;; yasnippet loading
-(add-to-list 'load-path
-             "~/.emacs.d/private/local/yasnippet/")
 (require 'yasnippet)
-;;(yas-global-mode t)
+
+;;(yas-global-mode t) ;; Set yasnippet enable globally
 (add-to-list 'yas-snippet-dirs
-             "~/.emacs.d/private/snippets/")
-(yas/reload-all) ;; Need to reload all to make yas-minor-mode works
+             "~/.emacs.d/private/snippets/") ;; Add a directory of snippets to yasnippet
+(yas/reload-all) ;; Reload all ; it's needed to make yas-minor-mode works (to get the loaded snippets)
+
+
+;; ########### AUTO-COMPLETE & AUTO-COMPLETE-C-HEADERS  ###########
+
+(ac-config-default) ;; set basic configuration to make auto-completion available for all languages
+
+(defun my:ac-c-headers-init () ;; Setting auto-complete-c-headers up : hooking this mode to auto-complete mode
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers))
+
+(add-hook 'c++-mode-hook 'my:ac-c-headers-init)
+(add-hook 'c-mode-hook 'my:ac-c-headers-init)
 
   )
+
 
 
 ;; Do not write anything past this comment. This is where Emacs will
