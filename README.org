@@ -18,7 +18,7 @@ Here are my personal configuration files for various and useful linux tools I us
 
 * Emacs packages
 
-| Nom                     | Description                                                             | Raccourci(s)                                              |
+| Name                     | Description                                                             | Shortcut(s)                                              |
 |-------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------|
 | [[https://github.com/flycheck/flycheck][flycheck]]                | On the fly syntaxical multi-languages correction                        |                                                           |
 | [[https://github.com/emacsmirror/htmlize][htmlize]]                 | Enables the syntaxical coloration of exported code from org-mode (html) |                                                          |
