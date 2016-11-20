@@ -20,17 +20,17 @@ Here are my personal configuration files for various and useful linux tools I us
 
 | Nom                     | Description                                                             | Raccourci(s)                                              |
 |-------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------|
-| [[https://github.com/flycheck/flycheck][flycheck]]                | On the fly syntaxical multi-languages correction                        | /                                                         |
-| [[https://github.com/emacsmirror/htmlize][htmlize]]                 | Enables the syntaxical coloration of exported code from org-mode (html) | /                                                         |
-| [[https://github.com/bcbcarl/emacs-wttrin][wttrin]]                  | Foresight weather                                                       | /                                                         |
-| [[https://github.com/yjwen/org-reveal][ox-reveal]]               | Create presentation exported in reveal.js from org-mode                 | /                                                         |
-| [[https://github.com/magit/magit][magit]]                   | Git manager                                                             | C-c g                                                     |
-| [[https://github.com/tom-tan/hlinum-mode][hlinum]]                  | Highlights current line number (with linum-mode enabled)                | /                                                         |
-| [[https://github.com/magnars/multiple-cursors.el][multiple-cursors]]        | Multi-cursors support                                                   | C-c m x/w (x for next occurrence & w for all occurrences) |
-| [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]           | Quick cursor jump mode                                                  | C-c a                                                     |
-| [[https://github.com/josteink/csharp-mode][csharp-mode]]             | Add syntaxical coloration to C# code                                    | /                                                         |
-| [[https://github.com/areina/helm-dash][helm-dash]]               | Programmation doc manager                                               | C-c d/D (d to display helm-dash & D to select language    |
-| [[https://github.com/joaotavora/yasnippet][yasnippet]]               | Snippets manager                                                        | /                                                         |
-| [[https://github.com/auto-complete/auto-complete][auto-complete]]           | Auto-completion in various programming languages                        | /                                                         |
-| [[https://github.com/mooz/auto-complete-c-headers][auto-complete-c-headers]] | Add C/C++ headers support to auto-complete                              | /                                                         |
-| [[https://github.com/victorhge/iedit][iedit]]                   | "Edit multiple regions simultaneously in a buffer or a region"          | C-c ;                                                     |
+| [[https://github.com/flycheck/flycheck][flycheck]]                | On the fly syntaxical multi-languages correction                        |                                                           |
+| [[https://github.com/emacsmirror/htmlize][htmlize]]                 | Enables the syntaxical coloration of exported code from org-mode (html) |                                                          |
+| [[https://github.com/bcbcarl/emacs-wttrin][wttrin]]                  | Foresight weather                                                       |                                                          |
+| [[https://github.com/yjwen/org-reveal][ox-reveal]]               | Create presentation exported in reveal.js from org-mode                 |                                                          |
+| [[https://github.com/magit/magit][magit]]                   | Git manager                                                             | *C-c g*                                                   |
+| [[https://github.com/tom-tan/hlinum-mode][hlinum]]                  | Highlights current line number (with linum-mode enabled)                |                                                          |
+| [[https://github.com/magnars/multiple-cursors.el][multiple-cursors]]        | Multi-cursors support                                                   | *C-c m x/w* (x for next occurrence & w for all occurrences) |
+| [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]           | Quick cursor jump mode                                                  | *C-c a*                                                   |
+| [[https://github.com/josteink/csharp-mode][csharp-mode]]             | Add syntaxical coloration to C# code                                    |                                                          |
+| [[https://github.com/areina/helm-dash][helm-dash]]               | Programmation doc manager                                               | *C-c d/D* (d to display helm-dash & D to select language   |
+| [[https://github.com/joaotavora/yasnippet][yasnippet]]               | Snippets manager                                                        |                                                          |
+| [[https://github.com/auto-complete/auto-complete][auto-complete]]           | Auto-completion in various programming languages                        |                                                          |
+| [[https://github.com/mooz/auto-complete-c-headers][auto-complete-c-headers]] | Add C/C++ headers support to auto-complete                              |                                                          |
+| [[https://github.com/victorhge/iedit][iedit]]                   | "Edit multiple regions simultaneously in a buffer or a region"          | *C-c ;*                                                   |
