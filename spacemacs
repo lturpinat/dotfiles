@@ -363,6 +363,15 @@ you should place your code here."
 ;; When using helm-dash, open "eww" to read doc
 (setq helm-dash-browser-func 'eww)
 
+;; Loading yasnippet
+(add-to-list 'load-path
+             "~/.emacs.d/private/local/yasnippet/")
+(require 'yasnippet)
+;;(yas-global-mode t)
+(add-to-list 'yas-snippet-dirs
+             "~/.emacs.d/private/snippets/")
+(yas/reload-all) ;; Need to reload all to make yas-minor-mode works
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
