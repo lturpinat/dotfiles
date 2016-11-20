@@ -314,6 +314,10 @@ you should place your code here."
 ;; (setq org-default-notes-file (concat org-directory "/Capture.org"))
 ;; (define-key global-map "\C-cc" 'org-capture)
 
+;; Enable by default "org-indent-mode"
+
+(setq org-startup-indented t)
+
 ;; Set calandar with french names
 (setq calendar-week-start-day 1
       calendar-day-name-array ["Dimanche" "Lundi" "Mardi" "Mercredi"
