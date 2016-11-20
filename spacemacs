@@ -302,10 +302,18 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+
+;; ########### GENERAL-EMACS ###########
+;; Disable right-click pop-up menu
+(fset 'menu-bar-open nil)
 
-;; Weather with wttrin
+
+;; ########### WTTRIN ###########
 
 (setq wttrin-default-cities '("Clermont-Ferrand"))
+
+
+;; ########### ORG-MODE ###########
 
 ;; Set org default directory (and for capture mode file)
 ;; Define C-cc to start org-capture
@@ -326,16 +334,19 @@ you should place your code here."
                                  "Juin" "Juillet" "Août" "Septembre"
                                  "Octobre" "Novembre" "Décembre"])
 
-;; Set ispell to french
-(setq ispell-dictionary "francais")
-
 ;; Set date format "dd/mm/yy" in general and for org-mode
 (setq european-calendar-style t)
 
 ;; Week start with Monday
 (setq calendar-week-start-day 1)
 
-;; Multiple cursors shortcuts
+
+;; ########### ISPELL ###########
+
+;; Set ispell to french
+(setq ispell-dictionary "francais")
+
+;; ########### Multiple cursors shortcuts ###########
 (global-set-key (kbd "C-c m c") 'set-rectangular-region-anchor) ;; Create a rectangular region (multiple-cursors)
 (global-set-key (kbd "C-c m x") 'mc/mark-next-like-this) ;; Select next occurrence of the primary selected region
 (global-set-key (kbd "C-c m w") 'mc/mark-all-like-this) ;; Same thing but everywhere in the buffer
@@ -358,20 +369,27 @@ you should place your code here."
 (global-set-key (kbd "C-c d") 'helm-dash)
 (global-set-key (kbd "C-c C-d") 'helm-dash-activate-docset)
 
+;; yasnippet minor-mode shortcut
+(global-set-key (kbd "C-c y") 'yas-minor-mode)
 
+
+;; ########### LINUM(HLINUL)-MODE ###########
 ;; Enabling linum-mode (display line numbers on the left bar) globally
 ;; (global-linum-mode 1)
 
 ;; Enable hlinum which hightlights current line number of linum-mode
 (hlinum-activate)
 
-;; Disable right-click pop-up menu
-(fset 'menu-bar-open nil)
+
+;; ########### HELM-DASH ###########
 
 ;; When using helm-dash, open "eww" to read doc
 (setq helm-dash-browser-func 'eww)
 
-;; yasnippet loading and shortcut
+
+;; ########### YASNIPPET ###########
+
+;; yasnippet loading
 (add-to-list 'load-path
              "~/.emacs.d/private/local/yasnippet/")
 (require 'yasnippet)
@@ -379,7 +397,6 @@ you should place your code here."
 (add-to-list 'yas-snippet-dirs
              "~/.emacs.d/private/snippets/")
 (yas/reload-all) ;; Need to reload all to make yas-minor-mode works
-(global-set-key (kbd "C-c y") 'yas-minor-mode)
 
   )
 
