@@ -59,7 +59,7 @@ values."
    ;; wrapped in a layer. if you need some configuration for these
    ;; packages, then consider creating a layer. you can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -367,7 +367,7 @@ you should place your code here."
 
 ;; helm-dash shortcuts
 (global-set-key (kbd "C-c d") 'helm-dash)
-(global-set-key (kbd "C-c C-d") 'helm-dash-activate-docset)
+(global-set-key (kbd "C-c D") 'helm-dash-activate-docset)
 
 ;; yasnippet minor-mode shortcut
 (global-set-key (kbd "C-c y") 'yas-minor-mode)
