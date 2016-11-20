@@ -336,6 +336,10 @@ you should place your code here."
 (global-set-key (kbd "C-c m x") 'mc/mark-next-like-this) ;; Select next occurrence of the primary selected region
 (global-set-key (kbd "C-c m w") 'mc/mark-all-like-this) ;; Same thing but everywhere in the buffer
 
+;; Go to beginning/end of buffer shortcuts
+(global-set-key (kbd "C-<") 'end-of-buffer)
+(global-set-key (kbd "M-<") 'beginning-of-buffer)
+
 ;; ace-jump-mode shortcut
 (global-set-key (kbd "C-c a") 'ace-jump-mode)
 
@@ -363,7 +367,7 @@ you should place your code here."
 ;; When using helm-dash, open "eww" to read doc
 (setq helm-dash-browser-func 'eww)
 
-;; Loading yasnippet
+;; yasnippet loading and shortcut
 (add-to-list 'load-path
              "~/.emacs.d/private/local/yasnippet/")
 (require 'yasnippet)
@@ -371,8 +375,10 @@ you should place your code here."
 (add-to-list 'yas-snippet-dirs
              "~/.emacs.d/private/snippets/")
 (yas/reload-all) ;; Need to reload all to make yas-minor-mode works
+(global-set-key (kbd "C-c y") 'yas-minor-mode)
 
   )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
