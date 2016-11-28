@@ -15,6 +15,7 @@ Here are my personal configuration files for various and useful linux tools I us
 | config                     | xfce4's, applications' and autostarts' configuration files |
 | portage                    | contains make.conf and package.use files                   |
 | X11                        | x11's configuration files                                  |
+| mpd                        | Music Player Daemon (mpd) configuration files              |
 
 * Emacs packages
 
