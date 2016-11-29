@@ -339,6 +339,22 @@ you should place your code here."
 
 (setq calendar-week-start-day 1) ;; Week start with Monday
 
+;; In order to export latex with syntaxical coloration for code blocks, minted (latex package)
+;; and Pygments (python syntax highlighter) need to be installed. (for pygments : pip install Pygments)
+;; @THANKS (http://joat-programmer.blogspot.fr/2013/07/org-mode-version-8-and-pdf-export-with.html)
+
+;; Include the latex-exporter
+(require 'ox-latex)
+;; Add minted to the defaults packages to include when exporting.
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+;; Tell the latex export to use the minted package for source
+;; code coloration.
+(setq org-latex-listings 'minted)
+;; Let the exporter use the -shell-escape option to let latex
+;; execute external programs.
+(setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
 
 ;; ########### ISPELL ###########
 
@@ -388,7 +404,10 @@ you should place your code here."
 
 ;; ########### HELM-DASH ###########
 
-(setq helm-dash-browser-func 'eww) ;; When using helm-dash, open "eww" to read doc
+;; (setq helm-dash-browser-func 'eww) ;; When using helm-dash, open "eww" to read doc
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "/usr/bin/chromium")
+(setq helm-dash-browser-func 'browse-url-generic)
 
 
 ;; ########### YASNIPPET ###########
@@ -416,5 +435,4 @@ you should place your code here."
 
 
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
+;; Do not write anything past this comment. This is where Emacs will auto-generate custom variable definitions.
