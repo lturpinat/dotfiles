@@ -59,7 +59,7 @@ values."
    ;; wrapped in a layer. if you need some configuration for these
    ;; packages, then consider creating a layer. you can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit srefactor beacon)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -361,6 +361,11 @@ you should place your code here."
 (setq ispell-dictionary "francais") ;; Set ispell to french
 
 
+;; ########### SEMANTIC-REFACTOR ###########
+(require 'srefactor)
+(semantic-mode 1)
+
+
 ;; ########### Multiple cursors shortcuts ###########
 
 (global-set-key (kbd "C-c m c") 'set-rectangular-region-anchor) ;; Create a rectangular region (multiple-cursors)
@@ -393,6 +398,10 @@ you should place your code here."
 
 ;; iedit-mode shortcut
 (global-set-key (kbd "C-c ;") 'iedit-mode)
+
+;; semantic-refactor
+(define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point) 
+;;(define-key c-mode-map (kbd "C-c c") 'srefactor-refactor-at-point)
 
 
 ;; ########### LINUM(HLINUL)-MODE ###########
@@ -435,4 +444,5 @@ you should place your code here."
 
 
 
-;; Do not write anything past this comment. This is where Emacs will auto-generate custom variable definitions.
+;; Do not write anything past this comment. This is where Emacs will
+;; auto-generate custom variable definitions.
