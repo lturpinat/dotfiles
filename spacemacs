@@ -59,7 +59,7 @@ values."
    ;; wrapped in a layer. if you need some configuration for these
    ;; packages, then consider creating a layer. you can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit srefactor beacon)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit srefactor beacon direx focus drag-stuff fix-word pdf-tools)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -131,7 +131,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(zenburn
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -308,7 +309,11 @@ you should place your code here."
 
 ;; ########### GENERAL-EMACS ###########
 
-(fset 'menu-bar-open nil) ;; Disable right-click pop-up menu
+  (fset 'menu-bar-open nil) ;; Disable right-click pop-up menu
+  (display-time) ;; display time
+  (display-battery-mode) ;; display battery percentage
+  (setq battery-mode-line-format " [%p]") ;; set battery display format (in percentage)
+  (setq display-time-default-load-average nil) ;; remove system load average (which is usually by the time display)
 
 
 ;; ########### WTTRIN ###########
@@ -366,42 +371,9 @@ you should place your code here."
 (semantic-mode 1)
 
 
-;; ########### Multiple cursors shortcuts ###########
-
-(global-set-key (kbd "C-c m c") 'set-rectangular-region-anchor) ;; Create a rectangular region (multiple-cursors)
-(global-set-key (kbd "C-c m x") 'mc/mark-next-like-this) ;; Select next occurrence of the primary selected region
-(global-set-key (kbd "C-c m w") 'mc/mark-all-like-this) ;; Same thing but everywhere in the buffer
-
-;; Go to beginning/end of buffer shortcuts
-(global-set-key (kbd "C-<") 'end-of-buffer)
-(global-set-key (kbd "M-<") 'beginning-of-buffer)
-
-;; ace-jump-mode shortcut
-(global-set-key (kbd "C-c a") 'ace-jump-mode)
-
-;; magit shortcut
-(global-set-key (kbd "C-c g") 'magit-status)
-
-;; search&replace shortcuts
-(global-set-key (kbd "C-c ù") 'query-replace)
-(global-set-key (kbd "C-c C-ù") 'query-replace-regexp)
-
-;; helm-dash shortcuts
-(global-set-key (kbd "C-c d") 'helm-dash)
-(global-set-key (kbd "C-c D") 'helm-dash-activate-docset)
-
-;; yasnippet minor-mode shortcut
-(global-set-key (kbd "C-c y") 'yas-minor-mode)
-
-;; expand-region shortcut
-(global-set-key (kbd "C-c v") 'er/expand-region)
-
-;; iedit-mode shortcut
-(global-set-key (kbd "C-c ;") 'iedit-mode)
-
-;; semantic-refactor
-(define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point) 
-;;(define-key c-mode-map (kbd "C-c c") 'srefactor-refactor-at-point)
+;; ########### DIREX ###########
+(push '(direx:direx-mode :position left :width 25 :dedicated t)
+      popwin:special-display-config)
 
 
 ;; ########### LINUM(HLINUL)-MODE ###########
@@ -440,9 +412,58 @@ you should place your code here."
 (add-hook 'c++-mode-hook 'my:ac-c-headers-init)
 (add-hook 'c-mode-hook 'my:ac-c-headers-init)
 
-  )
+
+;; ########### DRAG-SUFF ###########
+(drag-stuff-global-mode 1) ;; Enable drag-stuff globally
+(drag-stuff-define-keys) ;; Define key-bindings (M-up/down/left/right)
 
+
+;; ########### PDF-TOOLS ###########
+(pdf-tools-install)
 
+
+;; ########### SHORTCUTS ###########
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
+(global-set-key (kbd "C-c m c") 'set-rectangular-region-anchor) ;; Create a rectangular region (multiple-cursors)
+(global-set-key (kbd "C-c m x") 'mc/mark-next-like-this) ;; Select next occurrence of the primary selected region
+(global-set-key (kbd "C-c m w") 'mc/mark-all-like-this) ;; Same thing but everywhere in the buffer
+
+;; Go to beginning/end of buffer
+(global-set-key (kbd "C-<") 'end-of-buffer)
+(global-set-key (kbd "M-<") 'beginning-of-buffer)
+
+;; ace-jump-mode
+(global-set-key (kbd "C-c a") 'ace-jump-mode)
+
+;; magit
+(global-set-key (kbd "C-c g") 'magit-status)
+
+;; search&replace
+(global-set-key (kbd "C-c ù") 'query-replace)
+(global-set-key (kbd "C-c C-ù") 'query-replace-regexp)
+
+;; helm-dash
+(global-set-key (kbd "C-c d") 'helm-dash)
+(global-set-key (kbd "C-c D") 'helm-dash-activate-docset)
+
+;; yasnippet minor-mode
+(global-set-key (kbd "C-c y") 'yas-minor-mode)
+
+;; expand-region
+(global-set-key (kbd "C-c v") 'er/expand-region)
+
+;; iedit-mode
+(global-set-key (kbd "C-c ;") 'iedit-mode)
+
+;; semantic-refactor
+(define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+
+;; direx
+(global-set-key (kbd "C-c t") 'direx:jump-to-directory-other-window)
+
+;; fix-word
+(global-set-key (kbd "M-u") #'fix-word-upcase)
+(global-set-key (kbd "M-l") #'fix-word-downcase)
+(global-set-key (kbd "M-c") #'fix-word-capitalize)
+
+)
