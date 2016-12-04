@@ -426,6 +426,7 @@ you should place your code here."
 (load-file "~/.emacs.d/private/local/calfw-ical.el")
 (defun iut-calendar ()
   (interactive)
+  (cfw:open-ical-calendar "http://a-web-site.com/my-calendar.ics))
 
 (setq cfw:fchar-junction ?╋
       cfw:fchar-vertical-line ?┃
