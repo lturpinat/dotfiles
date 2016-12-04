@@ -59,7 +59,7 @@ values."
    ;; wrapped in a layer. if you need some configuration for these
    ;; packages, then consider creating a layer. you can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit srefactor beacon direx focus drag-stuff fix-word pdf-tools)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit srefactor beacon direx focus drag-stuff fix-word pdf-tools calfw bm)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -422,6 +422,21 @@ you should place your code here."
 (pdf-tools-install)
 
 
+;; ########### CALFW & CALFW-ICAL ###########
+(load-file "~/.emacs.d/private/local/calfw-ical.el")
+(defun iut-calendar ()
+  (interactive)
+
+(setq cfw:fchar-junction ?╋
+      cfw:fchar-vertical-line ?┃
+      cfw:fchar-horizontal-line ?━
+      cfw:fchar-left-junction ?┣
+      cfw:fchar-right-junction ?┫
+      cfw:fchar-top-junction ?┯
+      cfw:fchar-top-left-corner ?┏
+      cfw:fchar-top-right-corner ?┓)
+
+
 ;; ########### SHORTCUTS ###########
 
 (global-set-key (kbd "C-c m c") 'set-rectangular-region-anchor) ;; Create a rectangular region (multiple-cursors)
@@ -466,4 +481,18 @@ you should place your code here."
 (global-set-key (kbd "M-l") #'fix-word-downcase)
 (global-set-key (kbd "M-c") #'fix-word-capitalize)
 
+;; calfw-ical
+(global-set-key (kbd "C-c o") 'iut-calendar)
+
+;; kill-buffer & kill-this-buffer remapping
+(global-set-key (kbd "C-x C-k") 'kill-buffer)
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+;; bookmark
+(global-set-key (kbd "C-²") 'bm-toggle)
+(global-set-key (kbd "²") 'bm-next)
+(global-set-key (kbd "s-²") 'bm-previous)
+
 )
+
+
