@@ -314,6 +314,8 @@ you should place your code here."
   (display-battery-mode) ;; display battery percentage
   (setq battery-mode-line-format " [%p]") ;; set battery display format (in percentage)
   (setq display-time-default-load-average nil) ;; remove system load average (which is usually by the time display)
+  (setq auto-save-interval 20) ;; save buffer every 20 characters typed
+  (delete-selection-mode t) ;; enable text overwriting (highlighted text is removed when a key is pressed)
 
 
 ;; ########### WTTRIN ###########
