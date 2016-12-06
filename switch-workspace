@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ $# -ne 1 ] ; then
+    echo "Erreur syntaxe ! ./switch-workspace next/previous"
+    exit 1
+fi
+
+changeWorkspace () {
+    currentWorkspace=$(wmctrl -d | grep "*" | cut -d ' ' -f1)
+    size=$(($(wmctrl -d | tail -n 1 | cut -d ' ' -f1)))
+    action=$1
+    if [ $currentWorkspace -eq 0 ] && [ $action = "-" ] ; then wmctrl -s $size ;
+    elif [ $currentWorkspace -eq $size ] && [ $action = "+" ] ; then wmctrl -s 0 ;
+    elif [ $action = "+" ] ; then wmctrl -s $(($currentWorkspace + 1)) ;
+    elif [ $action = "-" ] ; then wmctrl -s $(($currentWorkspace - 1)) ;
+    fi
+}
+
+if [ $1 = "next" ] ; then
+    changeWorkspace +
+elif [ $1 = "previous" ] ; then
+    changeWorkspace -
+else
+    echo "Erreur de syntaxe ! ./switch-workspace next/previous"
+fi
