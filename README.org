@@ -44,4 +44,4 @@ Here are my personal configuration files for various and useful linux tools I us
 | [[https://github.com/mrkkrp/fix-word][fix-word]]                | Quickly capitalize, upcase, downcase                                    | *M-u* *M-l* *M-c*                                           |
 | [[https://github.com/politza/pdf-tools][pdf-tools]]               | Replace DocView with a much powerful reader                             |                                                             |
 | [[https://github.com/kiwanami/emacs-calfw][emacs-calfw]]             | "A calendar framework for Emacs"                                        | *C-c o*                                                     |
-| [[https://github.com/joodland/bm][bm]]                      | Visual bookmark                                                         | *C-²* *²* *S-²                                              |
+| [[https://github.com/joodland/bm][bm]]                      | Visual bookmark                                                         | *C-²*   *²*   *S-²*                                              |
