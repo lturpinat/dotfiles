@@ -16,22 +16,32 @@ Here are my personal configuration files for various and useful linux tools I us
 | portage                    | contains make.conf and package.use files                   |
 | X11                        | x11's configuration files                                  |
 | mpd                        | Music Player Daemon (mpd) configuration files              |
+| xbindkeys                  | package to remap keys of my mouse                          |
 
 * Emacs packages
 
-| Name                     | Description                                                             | Shortcut(s)                                              |
-|-------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------|
-| [[https://github.com/flycheck/flycheck][flycheck]]                | On the fly syntaxical multi-languages correction                        |                                                           |
-| [[https://github.com/emacsmirror/htmlize][htmlize]]                 | Enables the syntaxical coloration of exported code from org-mode (html) |                                                          |
-| [[https://github.com/bcbcarl/emacs-wttrin][wttrin]]                  | Foresight weather                                                       |                                                          |
-| [[https://github.com/yjwen/org-reveal][ox-reveal]]               | Create presentation exported in reveal.js from org-mode                 |                                                          |
-| [[https://github.com/magit/magit][magit]]                   | Git manager                                                             | *C-c g*                                                   |
-| [[https://github.com/tom-tan/hlinum-mode][hlinum]]                  | Highlights current line number (with linum-mode enabled)                |                                                          |
+| Name                    | Description                                                             | Shortcut(s)                                                 |
+|-------------------------+-------------------------------------------------------------------------+-------------------------------------------------------------|
+| [[https://github.com/flycheck/flycheck][flycheck]]                | On the fly syntaxical multi-languages correction                        |                                                             |
+| [[https://github.com/emacsmirror/htmlize][htmlize]]                 | Enables the syntaxical coloration of exported code from org-mode (html) |                                                             |
+| [[https://github.com/bcbcarl/emacs-wttrin][wttrin]]                  | Foresight weather                                                       |                                                             |
+| [[https://github.com/yjwen/org-reveal][ox-reveal]]               | Create presentation exported in reveal.js from org-mode                 |                                                             |
+| [[https://github.com/magit/magit][magit]]                   | Git manager                                                             | *C-c g*                                                     |
+| [[https://github.com/tom-tan/hlinum-mode][hlinum]]                  | Highlights current line number (with linum-mode enabled)                |                                                             |
 | [[https://github.com/magnars/multiple-cursors.el][multiple-cursors]]        | Multi-cursors support                                                   | *C-c m x/w* (x for next occurrence & w for all occurrences) |
-| [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]           | Quick cursor jump mode                                                  | *C-c a*                                                   |
-| [[https://github.com/josteink/csharp-mode][csharp-mode]]             | Add syntaxical coloration to C# code                                    |                                                          |
-| [[https://github.com/areina/helm-dash][helm-dash]]               | Programmation doc manager                                               | *C-c d/D* (d to display helm-dash & D to select language   |
-| [[https://github.com/joaotavora/yasnippet][yasnippet]]               | Snippets manager                                                        |                                                          |
-| [[https://github.com/auto-complete/auto-complete][auto-complete]]           | Auto-completion in various programming languages                        |                                                          |
-| [[https://github.com/mooz/auto-complete-c-headers][auto-complete-c-headers]] | Add C/C++ headers support to auto-complete                              |                                                          |
-| [[https://github.com/victorhge/iedit][iedit]]                   | "Edit multiple regions simultaneously in a buffer or a region"          | *C-c ;*                                                   |
+| [[https://github.com/winterTTr/ace-jump-mode][ace-jump-mode]]           | Quick cursor jump mode                                                  | *C-c a*                                                     |
+| [[https://github.com/josteink/csharp-mode][csharp-mode]]             | Add syntaxical coloration to C# code                                    |                                                             |
+| [[https://github.com/areina/helm-dash][helm-dash]]               | Programmation doc manager                                               | *C-c d/D* (d to display helm-dash & D to select language    |
+| [[https://github.com/joaotavora/yasnippet][yasnippet]]               | Snippets manager                                                        |                                                             |
+| [[https://github.com/auto-complete/auto-complete][auto-complete]]           | Auto-completion in various programming languages                        |                                                             |
+| [[https://github.com/mooz/auto-complete-c-headers][auto-complete-c-headers]] | Add C/C++ headers support to auto-complete                              |                                                             |
+| [[https://github.com/victorhge/iedit][iedit]]                   | "Edit multiple regions simultaneously in a buffer or a region"          | *C-c ;*                                                     |
+| [[https://github.com/tuhdo/semantic-refactor][semantic-refactor]]       | Improve C/C++ programming                                               | *M-RET*                                                     |
+| [[https://github.com/Malabarba/beacon][beacon]]                  | Highlights the cursor when scrolling to not lose i                      |                                                             |
+| [[https://github.com/m2ym/direx-el][direx]]                   | Directory explorer                                                      | *C-c t*                                                     |
+| [[https://github.com/larstvei/Focus][focus]]                   | Dims text of surrounding sections (like functions)                      |                                                             |
+| [[https://github.com/rejeep/drag-stuff.el][drag-stuff]]              | Enables to drag stuff around (regions, lines, words...)                 |                                                             |
+| [[https://github.com/mrkkrp/fix-word][fix-word]]                | Quickly capitalize, upcase, downcase                                    | *M-u* *M-l* *M-c*                                           |
+| [[https://github.com/politza/pdf-tools][pdf-tools]]               | Replace DocView with a much powerful reader                             |                                                             |
+| [[https://github.com/kiwanami/emacs-calfw][emacs-calfw]]             | "A calendar framework for Emacs"                                        | *C-c o*                                                     |
+| [[https://github.com/joodland/bm][bm]]                      | Visual bookmark                                                         | *C-²* *²* *S-²                                              |
