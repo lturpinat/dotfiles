@@ -59,7 +59,7 @@ values."
    ;; wrapped in a layer. if you need some configuration for these
    ;; packages, then consider creating a layer. you can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit srefactor beacon direx focus drag-stuff fix-word pdf-tools calfw bm)
+   dotspacemacs-additional-packages '(flycheck htmlize wttrin ox-reveal magit hlinum multiple-cursors ace-jump-mode csharp-mode helm-dash yasnippet auto-complete auto-complete-c-headers iedit srefactor beacon direx focus drag-stuff fix-word pdf-tools calfw bm syslog-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -316,6 +316,8 @@ you should place your code here."
   (setq display-time-default-load-average nil) ;; remove system load average (which is usually by the time display)
   (setq auto-save-interval 20) ;; save buffer every 20 characters typed
   (delete-selection-mode t) ;; enable text overwriting (highlighted text is removed when a key is pressed)
+  (setq dired-listing-switches "-alh") ;; ls args for dired (hidden files & folders, listed with human readable units)
+  (setq scroll-preserve-screen-position 1) ;;keep cursor at same position when scrolling
 
 
 ;; ########### WTTRIN ###########
@@ -424,6 +426,10 @@ you should place your code here."
 (pdf-tools-install)
 
 
+;; ########### SYSLOG-MODE ###########
+(add-to-list 'auto-mode-alist '("\\.log\\'" . syslog-mode)) ;; enable syslog-mode for file with ".log" extension
+
+
 ;; ########### CALFW & CALFW-ICAL ###########
 (load-file "~/.emacs.d/private/local/calfw-ical.el")
 
@@ -488,6 +494,10 @@ you should place your code here."
 ;; calfw-ical
 (global-set-key (kbd "C-c o") 'iut-calendar)
 
+;;scroll window up/down by one line
+(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
+(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
+
 ;; kill-buffer & kill-this-buffer remapping
 (global-set-key (kbd "C-x C-k") 'kill-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
@@ -496,6 +506,9 @@ you should place your code here."
 (global-set-key (kbd "C-²") 'bm-toggle)
 (global-set-key (kbd "²") 'bm-next)
 (global-set-key (kbd "s-²") 'bm-previous)
+
+;; quick calculation
+(global-set-key (kbd "C-c c") 'quick-calc)
 
 )
 
