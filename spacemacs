@@ -426,9 +426,10 @@ you should place your code here."
 
 ;; ########### CALFW & CALFW-ICAL ###########
 (load-file "~/.emacs.d/private/local/calfw-ical.el")
+
 (defun iut-calendar ()
   (interactive)
-  (cfw:open-ical-calendar "http://a-web-site.com/my-calendar.ics))
+  (cfw:open-ical-calendar "http://a-web-site.com/my-calendar.ics"))
 
 (setq cfw:fchar-junction ?╋
       cfw:fchar-vertical-line ?┃
@@ -497,5 +498,4 @@ you should place your code here."
 (global-set-key (kbd "s-²") 'bm-previous)
 
 )
-
 
