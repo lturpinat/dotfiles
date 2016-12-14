@@ -30,6 +30,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     sql
      markdown
      html
      ;; ----------------------------------------------------------------
@@ -319,8 +320,9 @@ you should place your code here."
   (setq scroll-preserve-screen-position 1) ;; keep cursor at same position when scrolling
 
   (when (string= system-name "atlas")
-    (display-battery-mode)) ;; display battery percentage
+    (display-battery-mode)) ;; display battery percentage (only on "atlas" workstation)
 
+  (setq explicit-shell-file-name "/bin/zsh") ;; set zsh terminal emulator by default
 
 ;; ########### WTTRIN ###########
 
@@ -420,7 +422,7 @@ you should place your code here."
 
 
 ;; ########### DRAG-SUFF ###########
-(drag-stuff-global-mode 1) ;; Enable drag-stuff globally
+(drag-stuff-global-mode nil) ;; Disable drag-stuff globally
 (drag-stuff-define-keys) ;; Define key-bindings (M-up/down/left/right)
 
 
@@ -511,6 +513,9 @@ you should place your code here."
 
 ;; quick calculation
 (global-set-key (kbd "C-c c") 'quick-calc)
+
+;; ansi-term
+(global-set-key (kbd "C-c m a") 'ansi-term)
 
 )
 
