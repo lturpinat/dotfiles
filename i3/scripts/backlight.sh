@@ -2,7 +2,7 @@
 
 # Script for managing backlight in Asus g75vx
 
-if [ -z $1] ; then
+if [ -z $1 ] ; then
     echo "Syntax : $0 up|down|min|max|[0-3] "
     exit 1
 fi
