@@ -6,7 +6,7 @@ Here are my personal configuration files for various and useful linux tools I us
 
 * Content
 
-For zsh, I use the excellent the excelent [[https://grml.org/zsh/][grml's configuration]]
+For zsh, I use the excellent [[https://grml.org/zsh/][grml's configuration]]
 
 | File name (real file name) | Description                                                |
 |----------------------------+------------------------------------------------------------|
