@@ -7,14 +7,13 @@
 
 # i3 config file (v4)
 #
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# Default : font pango:monospace 8
-font pango:System San Francisco Display 8 
+font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -27,19 +26,21 @@ font pango:System San Francisco Display 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-# Use Mouse+$mod to drag floating windows to thei wanted position
+# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+Q kill
 
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -91,6 +92,7 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# switch to workspace
 bindsym $mod+ampersand workspace 1
 bindsym $mod+eacute workspace 2
 bindsym $mod+quotedbl workspace 3
@@ -147,75 +149,47 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Personnal / Graphical#
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-
-# window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color  #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  #00ff00
-client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color           #00ff00
-
-hide_edge_borders both
-
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 415 -opacity "85" -bw 0 -bc "#2f343f" -bg "#2f343f" -fg "#f3f4f5" -hlbg "#2f343f" -hlfg "#9575cd" -font "System San Francisco Display 18"
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    colors {
-    		background $bg-color
-	    	separator #757575
-     		#                  border             background         text
-		    focused_workspace  $bg-color          $bg-color          $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-}
+#bar {
+#        status_command i3status
+#}
 
-}
+# Window
+hide_edge_borders both # Hide borders on the edges
 
-##################
-#Personnal config#
-##################
-#nmcli device wifi connect Turpinat password JARNAGES
-bindsym $mod+shift+x exec i3lock
-exec sudo mount -t ntfs /dev/sdb1 /mnt/data
-exec --no-startup-id i3-msg 'workspace 1; exec konsole'
-exec --no-startup-id i3-msg 'workspace 2; exec firefox'
-exec --no-startup-id i3-msg 'workspace 3; exec emacs'
+# Wallpaper
 
-# Set wallpaper with "feh"
-exec_always feh --bg-scale /home/lturpinat/Images/wallpaper.jpg
+exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/landscapes/Half Dome August Sunset.jpg"
 
-# Set compton (smooth interactions betweens windows and actions)
-exec_always compton -f --config ~/.config/.compton.conf
+# Touchpad
+exec xinput set-prop 13 299 1 #Enable double-tap
 
-#assign [class="konsole"] 1
-#assign [class="Firefox"] 2
+# Mouse
+exec xinput set-prop 12 281 0 #Disable natural scrolling with Logitech MX Master
 
-###Multimedia bindings
+# Starting up Emacs daemon
+exec --no-startup-id emacs --daemon
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle # mute sound
+# Default settings for applications 
 
-# Sreen brightness controls
-bindsym $mod+F6 exec xbacklight -inc 20 # increase screen brightness
-bindsym $mod+F5 exec xbacklight -dec 20 # decrease screen brightness
+for_window [class="Galculator"] floating enable
+for_window [class="Pavucontrol"] floating disable
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-settings-manager"] floating disable
+for_window [class="Xfce4-taskmanager"] floating enable
+for_window [class="Termite"] focus
 
-# Touchpad controls
-bindsym XF86TouchpadToggle exec sh ~/.config/i3/toggletouchpad.sh # toggle touchpad
+# Default applications to launch at login
 
-# Keyboard backlight controls
-bindsym XF86KbdBrightnessUp exec ~/.config/i3/asus_kb_backlight.sh up
-bindsym XF86KbdBrightnessDown exec ~/.config/i3/asus_kb_backlight.sh down
-####################
+exec nm-applet &
+exec blueman-applet &
+exec redshift-gtk &
+
+# XFCE4
+# Disable i3bar (see above)
+new_window 1pixel # Disable titlebar
+exec --no-startup-id xfce4-panel --disable-wm-check # Start xfce4-panel
+exec xfsettingsd --sm-client-disable &
+exec xfce4-power-manager &
+
