@@ -30,17 +30,24 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+
+bindsym $mod+d exec rofi -show run -hide-scrollbar
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+
+bindsym $mod+Shift+d exec rofi -show drun -hide-scrollbar
+
+bindsym $mod+w exec rofi -show window -hide-scrollbar
 
 # change focus
 bindsym $mod+j focus left
@@ -160,7 +167,7 @@ hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
 
-exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/landscapes/Half Dome August Sunset.jpg"
+exec --no-startup-id feh --randomize --bg-scale "wallpaper.png"
 
 # Touchpad
 exec xinput set-prop 13 299 1 #Enable double-tap
@@ -185,11 +192,16 @@ for_window [class="Termite"] focus
 exec nm-applet &
 exec blueman-applet &
 exec redshift-gtk &
+exec mpd &
+exec dropbox &
 
-# XFCE4
-# Disable i3bar (see above)
+# Lauching XFCE4
 new_window 1pixel # Disable titlebar
 exec --no-startup-id xfce4-panel --disable-wm-check # Start xfce4-panel
 exec xfsettingsd --sm-client-disable &
 exec xfce4-power-manager &
 
+#Multimedia shortcuts
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
