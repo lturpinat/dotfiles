@@ -156,18 +156,23 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Setting laptop screen as primary
+#exec --no-startup-id xrandr --output eDP-1 --primary
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-#        status_command i3status
-#}
+bar{
+	tray_output eDP-1
+	font pango:monospace 12.5px
+        status_command i3status
+}
 
 # Window
 hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
 
-exec --no-startup-id feh --randomize --bg-scale "wallpaper.png"
+exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/montains.jpg"
 
 # Touchpad
 exec xinput set-prop 13 299 1 #Enable double-tap
@@ -194,14 +199,62 @@ exec blueman-applet &
 exec redshift-gtk &
 exec mpd &
 exec dropbox &
+exec pnmixer &
 
 # Lauching XFCE4
-new_window 1pixel # Disable titlebar
-exec --no-startup-id xfce4-panel --disable-wm-check # Start xfce4-panel
-exec xfsettingsd --sm-client-disable &
-exec xfce4-power-manager &
+#new_window 1pixel # Disable titlebar
+#exec --no-startup-id xfce4-panel --disable-wm-check # Start xfce4-panel
+#exec xfsettingsd --sm-client-disable &
+#exec xfce4-power-manager &
+
+bindsym $mod+a exec --no-startup-id emacsclient -nc
+bindsym Mod1+e exec thunar
+
+#bindsym Control+Mod1+l exec --no-startup-id slock
+bindsym $mod+shift+x exec betterlockscreen --lock
 
 #Multimedia shortcuts
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_up # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_down # decrease screen brightness
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id /home/lturpinat/.config/i3/scripts/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id /home/lturpinat/.config/i3/scripts/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id /home/lturpinat/.config/i3/scripts/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id /home/lturpinat/.config/i3/scripts/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/lturpinat/.config/i3/scripts/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/lturpinat/.config/i3/scripts/i3exit shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+U mode "$mode_system"
+
+
+set $mode_screen (l) Laptop Only, (r) Extend Right, (f) Extend Left, (o) Only Other Screen, (s) Mirror Mode
+mode "$mode_screen" {
+    bindsym l exec --no-startup-id xrandr --output HDMI-1 --off, mode "default"
+    bindsym r exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1, mode "default"
+    bindsym f exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1, mode "default"
+    bindsym o exec --no-startup-id (xrandr --output HDMI-1 --auto && xrandr --output eDP-1 --off), mode "default"
+    bindsym s exec --no-startup-id (xrandr --output eDP-1 --auto && xrandr --output HDMI-1 --auto), mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+P mode "$mode_screen"
