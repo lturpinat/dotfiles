@@ -53,13 +53,13 @@ disk "/" {
 }
 
 volume master {
-       format = "♪ %volume"
-       format_muted = "♪ muted (%volume)"
+       format = " %volume"
+       format_muted = " muted (%volume)"
        device = "pulse:alsa_output.pci-0000_00_1f.3.analog-stereo"
 }
 
 volume bluetooth {
-       format = "♬ %volume"
-       format_muted = "♬ muted (%volume)"
+       format = " %volume"
+       format_muted = " muted (%volume)"
        device = "pulse:bluez_sink.A0_14_3D_CE_42_DB.a2dp_sink"
 }
