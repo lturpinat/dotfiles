@@ -140,7 +140,7 @@ bindsym $mod+r mode "resize"
 bar{
 	tray_output eDP-1 # Display icons only on laptop screen
 	font pango:monospace 12.5px
-        status_command i3status
+        status_command i3blocks
 }
 
 # Setting laptop screen as primary
@@ -150,7 +150,7 @@ exec --no-startup-id xrandr --output eDP-1 --primary
 hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
-exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/montains.jpg"
+exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/bd.jpg"
 
 # Touchpad
 exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap
@@ -180,14 +180,14 @@ bindsym $mod+a exec --no-startup-id emacsclient -nc
 bindsym Mod1+e exec thunar
 
 # MPC Multimedia shortcuts
-bindsym XF86AudioPlay exec mpc toggle # toggle play/paye
-bindsym XF86AudioNext exec mpc next   # next song
-bindsym XF86AudioPrev exec mpc prev   # prev song
+bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+10 i3blocks  # toggle play/paye
+bindsym XF86AudioNext exec mpc next && pkill -RTMIN+10 i3blocks    # next song
+bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+10 i3blocks    # prev song
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+    # increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-    # decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks     # increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks    # decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks  # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_up     # increase screen brightness
