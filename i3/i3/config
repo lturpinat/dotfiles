@@ -21,7 +21,7 @@ bindsym $mod+Shift+Q kill
 bindsym $mod+d exec rofi -show run -hide-scrollbar
 
 # start rofi displaying only desktop applications
-bindsym $mod+Shift+d exec rofi -show drun -hide-scrollbar
+bindsym $mod+Shift+d exec rofi -show drun -hide-scrollbar -show-icons
 
 # start rofi displaying launched applications in different workspaces 
 bindsym $mod+w exec rofi -show window -hide-scrollbar
@@ -150,7 +150,7 @@ exec --no-startup-id xrandr --output eDP-1 --primary
 hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
-exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/bd.jpg"
+exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/moondog.jpg" 
 
 # Touchpad
 exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap
@@ -165,6 +165,7 @@ for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Xfce4-settings-manager"] floating disable
 for_window [class="Xfce4-taskmanager"] floating enable
 for_window [class="Termite"] focus
+for_window [class="Gimp-2.10"] floating disable
 
 # Default applications to launch at login
 exec nm-applet &
@@ -174,6 +175,8 @@ exec mpd &
 exec dropbox &
 exec pnmixer &
 exec clipit &
+exec compton &
+exec /home/lturpinat/go/bin/gobkm -db /home/lturpinat/go/bin/bkm.db -port 8080 &
 
 # Keybindings
 bindsym $mod+a exec --no-startup-id emacsclient -nc
