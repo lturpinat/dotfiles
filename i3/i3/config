@@ -165,7 +165,7 @@ for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Xfce4-settings-manager"] floating disable
 for_window [class="Xfce4-taskmanager"] floating enable
 for_window [class="Termite"] focus
-for_window [class="Gimp-2.10"] floating disable
+for_window [class="Gimp-2.10"] floating enable
 
 # Default applications to launch at login
 exec nm-applet &
