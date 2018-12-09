@@ -12,7 +12,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -138,7 +138,7 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar
 bar{
-	tray_output eDP-1 # Display icons only on laptop screen
+#	tray_output eDP-1 # Display icons only on laptop screen
 	font pango:monospace 12.5px
         status_command i3blocks
 }
@@ -170,7 +170,11 @@ for_window [class="Gimp-2.10"] floating enable
 # Default applications to launch at login
 exec nm-applet &
 exec blueman-applet &
-exec redshift-gtk &
+
+exec /usr/lib/geoclue-2.0/demos/agent &
+
+exec redshift -l 45.777210:-3.082520 &
+
 exec mpd &
 exec dropbox &
 exec pnmixer &
@@ -196,8 +200,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_up     # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_down # decrease screen brightness
 
-# Assign Firefox Nightly to workspace1
+# Assign Firefox Nightly to workspace1 and hide windows title bar (only in stacking mode)
 assign [class="Nightly"] $workspace1
+for_window [class="Nightly"] border pixel 1
 
 # Mode to manage logout features
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
