@@ -1,4 +1,4 @@
-# i3 config file (v4)
+# i3 config file
 #
 # author: @lturpinat
 #
@@ -26,23 +26,11 @@ bindsym $mod+Shift+d exec rofi -show drun -hide-scrollbar -show-icons
 # start rofi displaying launched applications in different workspaces 
 bindsym $mod+w exec rofi -show window -hide-scrollbar
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -78,6 +66,7 @@ bindsym $mod+q focus parent
 
 # Workspace names
 set $workspace1 "1: "
+set $workspace10 "0: "
 
 # switch to workspace
 bindsym $mod+ampersand workspace $workspace1
@@ -89,7 +78,7 @@ bindsym $mod+minus workspace 6
 bindsym $mod+egrave workspace 7
 bindsym $mod+underscore workspace 8
 bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
+bindsym $mod+agrave workspace $workspace10
 
 # move focused container to workspace
 bindsym $mod+Shift+ampersand move container to workspace $workspace1
@@ -101,28 +90,17 @@ bindsym $mod+Shift+minus move container to workspace 6
 bindsym $mod+Shift+egrave move container to workspace 7
 bindsym $mod+Shift+underscore move container to workspace 8
 bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to workspace 10
+bindsym $mod+Shift+agrave move container to $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym m resize grow width 10 px or 10 ppt
-
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
@@ -138,7 +116,7 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar
 bar{
-#	tray_output eDP-1 # Display icons only on laptop screen
+	tray_output eDP-1 # Display icons only on laptop screen
 	font pango:monospace 12.5px
         status_command i3blocks
 }
@@ -150,7 +128,7 @@ exec --no-startup-id xrandr --output eDP-1 --primary
 hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
-exec --no-startup-id feh --randomize --bg-scale "/home/lturpinat/Images/Wallpapers/moondog.jpg" 
+exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/serusier (paul) - reunion de bretonnes dans le bois sacre.jpg" 
 
 # Touchpad
 exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap
@@ -161,18 +139,13 @@ exec --no-startup-id emacs --daemon
 # Default settings for applications 
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating disable
-for_window [class="Xfce4-appfinder"] floating enable
-for_window [class="Xfce4-settings-manager"] floating disable
-for_window [class="Xfce4-taskmanager"] floating enable
-for_window [class="Termite"] focus
-for_window [class="Gimp-2.10"] floating enable
+for_window [class="Gimp"] floating enable
 
 # Default applications to launch at login
 exec nm-applet &
 exec blueman-applet &
 
 exec /usr/lib/geoclue-2.0/demos/agent &
-
 exec redshift -l 45.777210:-3.082520 &
 
 exec mpd &
@@ -180,11 +153,11 @@ exec dropbox &
 exec pnmixer &
 exec clipit &
 exec compton &
-exec /home/lturpinat/go/bin/gobkm -db /home/lturpinat/go/bin/bkm.db -port 8080 &
 
 # Keybindings
 bindsym $mod+a exec --no-startup-id emacsclient -nc
 bindsym Mod1+e exec thunar
+bindsym $mod+P exec /home/lturpinat/.config/i3/scripts/rofi/monitor_layout.sh
 
 # MPC Multimedia shortcuts
 bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+10 i3blocks  # toggle play/paye
@@ -204,6 +177,13 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo /home/lturpinat/.config/
 assign [class="Nightly"] $workspace1
 for_window [class="Nightly"] border pixel 1
 
+# Assign Evolution to workspace10 and hide windows title bar (only in stacking mode)
+assign [class="Evolution"] $workspace10
+for_window [class="Evolution"] border pixel 1
+
+# Make vscode hide windows title bar (only in stacking mode)
+for_window [class="Code"] border pixel 1
+
 # Mode to manage logout features
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -219,19 +199,3 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+U mode "$mode_system"
-
-
-# Mode to manage screen
-set $mode_screen (l) Laptop Only, (r) Extend Right, (f) Extend Left, (o) Only Other Screen, (s) Mirror Mode
-mode "$mode_screen" {
-    bindsym l exec --no-startup-id xrandr --output HDMI-1 --off, mode "default"
-    bindsym r exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1, mode "default"
-    bindsym f exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1, mode "default"
-    bindsym o exec --no-startup-id (xrandr --output HDMI-1 --auto && xrandr --output eDP-1 --off), mode "default"
-    bindsym s exec --no-startup-id (xrandr --output eDP-1 --auto && xrandr --output HDMI-1 --auto), mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+P mode "$mode_screen"
