@@ -18,13 +18,13 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Q kill
 
 # start rofi (alternative to d-menu)
-bindsym $mod+d exec rofi -show run -hide-scrollbar
+bindsym $mod+d exec rofi -show run -hide-scrollbar -theme "solarized-darker" -display-run "> "
 
 # start rofi displaying only desktop applications
-bindsym $mod+Shift+d exec rofi -show drun -hide-scrollbar -show-icons
+bindsym $mod+Shift+d exec rofi -show drun -hide-scrollbar -show-icons -theme "solarized-darker" -display-run "> "
 
-# start rofi displaying launched applications in different workspaces 
-bindsym $mod+w exec rofi -show window -hide-scrollbar
+# start rofi displaying launched applications in different workspaces
+bindsym $mod+w exec rofi -show window -hide-scrollbar -theme "solarized-darker" -display-run "> "
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -116,8 +116,8 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar
 bar{
-	tray_output eDP-1 # Display icons only on laptop screen
-	font pango:monospace 12.5px
+    tray_output eDP-1 # Display icons only on laptop screen
+    font pango:monospace 12.5px
         status_command i3blocks
 }
 
@@ -128,7 +128,7 @@ exec --no-startup-id xrandr --output eDP-1 --primary
 hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/serusier (paul) - reunion de bretonnes dans le bois sacre.jpg" 
+exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/clotaire-lehoux-2381-unsplash.jpg"
 
 # Touchpad
 exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap
@@ -136,7 +136,7 @@ exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled
 # Starting up Emacs daemon
 exec --no-startup-id emacs --daemon
 
-# Default settings for applications 
+# Default settings for applications
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating disable
 for_window [class="Gimp"] floating enable
@@ -158,6 +158,9 @@ exec compton &
 bindsym $mod+a exec --no-startup-id emacsclient -nc
 bindsym Mod1+e exec thunar
 bindsym $mod+P exec /home/lturpinat/.config/i3/scripts/rofi/monitor_layout.sh
+
+#Screenshot tool
+bindsym Print exec spectacle
 
 # MPC Multimedia shortcuts
 bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+10 i3blocks  # toggle play/paye
@@ -183,6 +186,9 @@ for_window [class="Evolution"] border pixel 1
 
 # Make vscode hide windows title bar (only in stacking mode)
 for_window [class="Code"] border pixel 1
+
+# Make ghostwriter hide windows title bar (only in stacking mode)
+for_window [class="ghostwriter"] border pixel 1
 
 # Mode to manage logout features
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
