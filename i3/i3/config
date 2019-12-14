@@ -66,6 +66,7 @@ bindsym $mod+q focus parent
 
 # Workspace names
 set $workspace1 "1: "
+set $workspace9 "9: "
 set $workspace10 "0: "
 
 # switch to workspace
@@ -77,7 +78,7 @@ bindsym $mod+parenleft workspace 5
 bindsym $mod+minus workspace 6
 bindsym $mod+egrave workspace 7
 bindsym $mod+underscore workspace 8
-bindsym $mod+ccedilla workspace 9
+bindsym $mod+ccedilla workspace $workspace9
 bindsym $mod+agrave workspace $workspace10
 
 # move focused container to workspace
@@ -89,8 +90,8 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+minus move container to workspace 6
 bindsym $mod+Shift+egrave move container to workspace 7
 bindsym $mod+Shift+underscore move container to workspace 8
-bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to $workspace10
+bindsym $mod+Shift+ccedilla move container to workspace $workspace9
+bindsym $mod+Shift+agrave move container to workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -118,7 +119,7 @@ bindsym $mod+r mode "resize"
 bar{
     tray_output eDP-1 # Display icons only on laptop screen
     font pango:monospace 12.5px
-        status_command i3blocks
+    status_command i3blocks
 }
 
 # Setting laptop screen as primary
@@ -128,13 +129,16 @@ exec --no-startup-id xrandr --output eDP-1 --primary
 hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/clotaire-lehoux-2381-unsplash.jpg"
+exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/landscapes/The Rock Trainier.jpg"
 
 # Touchpad
 exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap
 
 # Starting up Emacs daemon
 exec --no-startup-id emacs --daemon
+
+# Starting up KDE-Connect
+exec --no-startup-id kdeconnect-indicator
 
 # Default settings for applications
 for_window [class="Galculator"] floating enable
@@ -176,9 +180,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_up     # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_down # decrease screen brightness
 
-# Assign Firefox Nightly to workspace1 and hide windows title bar (only in stacking mode)
-assign [class="Nightly"] $workspace1
-for_window [class="Nightly"] border pixel 1
+# Assign Firefox to workspace1 and hide windows title bar (only in stacking mode)
+assign [class="firefoxdeveloperedition"] $workspace1
+for_window [class="firefoxdeveloperedition"] border pixel 1
 
 # Assign Evolution to workspace10 and hide windows title bar (only in stacking mode)
 assign [class="Evolution"] $workspace10
@@ -189,6 +193,9 @@ for_window [class="Code"] border pixel 1
 
 # Make ghostwriter hide windows title bar (only in stacking mode)
 for_window [class="ghostwriter"] border pixel 1
+
+# Make QtCreator hide windows title bar (only in stacking mode)
+for_window [class="QtCreator"] border pixel 1
 
 # Mode to manage logout features
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
