@@ -1,0 +1,23 @@
+#+TITLE: My emacs configuration files
+#+AUTHOR: Louis Turpinat
+
+[[./screenshot.png]]
+
+* Prerequisites
+
++ /clang/ in order to use irony (powerful C debugger)
++ /imagemagic/ to generate images from LaTeX source blocks in org-mode
+
+* Installation 
+
++ Launch Emacs a first time to install all the packages
++ At the end of the installation it will automatically restart
++ You can now install the server of pdf-tools and irony :
+
+#+BEGIN_SRC emacs-lisp
+  (pdf-tools-install) ;; will install a better pdf viewer inside of DocView
+  (irony-install-server) ;; will compile the irony-server (with clang)
+#+END_SRC
+
+
+

@@ -1,0 +1,63 @@
+#+TITLE: My emacs configuration files
+#+AUTHOR: Louis Turpinat
+
+[[./screenshot.png]]
+
+* Design choices
+
+I formerly choosed to use org files to gather my configuration settings in one file. As it brought
+nice form to the whole configuration, it felt more and more harder to debug it, while adding adding some delay on initialisation.
+As a consequence, I decided to break it apart, and start anew with the old-fashioned way : splitting everything into folders and files. It does feel a little bit heavier, but it is truly efficient when it comes to loading and debugging (especially that one).
+
+* Hierarchy
+
+Here is the hierarchy of the folders as of 23/10
+#+BEGIN_SRC text
+├── init.el
+├── elisp
+│   ├── BasicSettings.el
+│   ├── GlobalShortcuts.el
+│   ├── languages
+│   │   ├── CConfiguration.el
+│   │   └── quack.el
+│   ├── plugins
+│   │   ├── Auctex.el
+│   │   ├── Auto-Complete.el
+│   │   ├── Browse-Kill-Ring.el
+│   │   ├── Flycheck.el
+│   │   ├── Flymake.el
+│   │   ├── Ivy.el
+│   │   ├── Latex-Preview-Pane.el
+│   │   ├── Markdown.el
+│   │   ├── RainbowDelimiters.el
+│   │   ├── Scheme.el
+│   │   └── UndoTree.el
+│   └── scripts
+│       ├── ImproveCompilation.el
+│       ├── PackageRefreshAndInstall.el
+│       └── QuickC.el
+#+END_SRC
+
+** init.el
+
+The *init.el* basically only loads the other configuration files. I could have used a convenient function to load it all at once, but I preferred to put one load by file - at least for now. It enables me to quickly choose which "extra-feature" I want on and enhances debugging neatly.
+
+** BasicSettings.el
+
+This file contains global settings that I want to apply on all my Emacs configuration. It tends not to rely on some technologies or plugins (except their name so that the package manager download them).
+
+** GlobalShortcuts.el
+
+Follows the same philosophy than *BasicSettings.el* but with shortcuts.
+
+** languages
+
+Contains files that have great impact on a specific language.
+
+** plugins
+
+Each plugin requiring configuration is inside that folder - it also contains its specific bindings.
+
+** scripts
+
+Contains cumbersome scripts that improve my use of Emacs.

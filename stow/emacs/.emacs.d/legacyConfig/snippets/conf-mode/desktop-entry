@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: desktop entry
+# contributor: lturpinat
+# key: desktop
+# --
+[Desktop Entry]
+Version=1.0
+Type=${Application}
+Name=${}
+Comment=${}
+Exec=${}
+Icon=${}
+Categories=${Application;Development}; 

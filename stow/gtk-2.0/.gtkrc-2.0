@@ -1,0 +1,9 @@
+gtk-can-change-accels = 1
+gtk-icon-theme-name = "Flat-Remix-Red-Dark"
+gtk-theme-name = "Arc-Flatabulous-Dark"
+style "user-font"
+{
+        font_name="Sans 10"
+}
+widget_class "*" style "user-font"
+gtk-font-name = "Sans 10"
