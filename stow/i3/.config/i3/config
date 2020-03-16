@@ -118,7 +118,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar
 bar{
     tray_output eDP-1 # Display icons only on laptop screen
-    font pango:monospace 12.5px
+    font pango:monospace 13px
     status_command i3blocks
 }
 
@@ -150,7 +150,7 @@ exec nm-applet &
 exec blueman-applet &
 
 exec /usr/lib/geoclue-2.0/demos/agent &
-exec redshift -l 45.777210:-3.082520 &
+exec redshift
 
 exec mpd &
 exec dropbox &
