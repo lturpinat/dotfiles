@@ -1,0 +1,4 @@
+directory: /home/lturpinat/Musique
+library: /home/lturpinat/Documents/beets/musiclibrary.db
+import:
+  move: yes
