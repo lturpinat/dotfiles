@@ -1,5 +1,6 @@
 gtk-can-change-accels = 1
-gtk-icon-theme-name = "Flat-Remix-Blue-Dark"
+#gtk-icon-theme-name = "Flat-Remix-Blue-Dark"
+gtk-icon-theme-name = "Arc"
 gtk-theme-name = "Arc-Flatabulous-Dark"
 style "user-font"
 {
