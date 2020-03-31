@@ -117,7 +117,7 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar
 bar{
-    tray_output eDP-1 # Display icons only on laptop screen
+#    tray_output eDP-1 # Display icons only on laptop screen
     font pango:monospace 13px
     status_command i3blocks
 }
@@ -129,7 +129,7 @@ exec --no-startup-id xrandr --output eDP-1 --primary
 hide_edge_borders both # Hide borders on the edges
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/landscapes/The Rock Trainier.jpg"
+#exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/landscapes/The Rock Trainier.jpg"
 
 # Touchpad
 exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap
@@ -150,7 +150,7 @@ exec nm-applet &
 exec blueman-applet &
 
 exec /usr/lib/geoclue-2.0/demos/agent &
-exec redshift
+exec redshift-qt &
 
 exec mpd &
 exec dropbox &
@@ -196,6 +196,15 @@ for_window [class="ghostwriter"] border pixel 1
 
 # Make QtCreator hide windows title bar (only in stacking mode)
 for_window [class="QtCreator"] border pixel 1
+
+# Make draw.io hide windows title bar (only in stacking mode)
+for_window [class="draw.io"] border pixel 1
+
+# Make teams notifications floatty
+#for_window [title="Microsoft Teams Notification"] floating enabl
+no_focus [title="Microsoft Teams Notification"]
+for_window [title="Microsoft Teams Notification"] move absolute position 4812 px 1316 px
+
 
 # Mode to manage logout features
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown

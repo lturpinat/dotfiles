@@ -63,6 +63,7 @@ interval=1
 # (defaults to 10 for 10%).
 [disk]
 label=
+command=/home/lturpinat/.config/i3blocks/scripts/disk
 #instance=/mnt/data
 interval=30
 
