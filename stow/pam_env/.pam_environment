@@ -1,3 +1,17 @@
+# Mozilla Wayland support
 MOZ_ENABLE_WAYLAND DEFAULT=1
-QT_QPA_PLATFORM DEFAULT=wayland
+
+# SDL Wayland support
 SDL_VIDEODRIVER DEFAULT=wayland
+
+# Libreoffice wayland support
+SAL_USE_VCLPLUGIN DEFAULT=gtk3
+
+# Should make Qt apps to use wayland
+# XDG_SESSION_TYPE DEFAULT=wayland
+
+# Hide Qt window decorations
+QT_WAYLAND_DISABLE_WINDOWDECORATION DEFAULT=1
+
+#CLUTTER_BACKEND=wayland
+#QT_QPA_PLATFORM DEFAULT=wayland-egl

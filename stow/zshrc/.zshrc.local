@@ -1,0 +1,15 @@
+#if [ -f ~/.bash_profile ]; then
+#        . ~/.bash_profile;
+#fi
+
+source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+
+export PATH="${PATH}:$HOME/.cargo/bin:$HOME/.local/bin"
+export EDITOR=nvim
+
+alias ls='ls --color=auto'
+
+# Start sway if logged using tty1
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  exec sway
+fi

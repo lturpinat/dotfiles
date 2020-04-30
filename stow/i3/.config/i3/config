@@ -205,6 +205,8 @@ for_window [class="draw.io"] border pixel 1
 no_focus [title="Microsoft Teams Notification"]
 for_window [title="Microsoft Teams Notification"] move absolute position 4812 px 1316 px
 
+# Make Spotify hide windows title bar (only in stacking mode)
+for_window [class="Spotify"] border pixel 1
 
 # Mode to manage logout features
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
