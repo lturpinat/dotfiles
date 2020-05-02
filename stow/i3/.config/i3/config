@@ -1,75 +1,71 @@
-# i3 config file
-#
-# author: @lturpinat
-#
+#########################
+# i3 configuration file #
+#    		   	#
+# author: @lturpinat	#
+#########################
 
+#
+# Global variables
+#
 set $mod Mod4
+set $scripts /home/lturpinat/.config/i3/scripts
 
-# Font for window titles
+#
+# i3 basic configuration
+#
 font pango:monospace 8
-
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# start a terminal
 bindsym $mod+Return exec alacritty
-
-# kill focused window
 bindsym $mod+Shift+Q kill
 
-# start rofi (alternative to d-menu)
-bindsym $mod+d exec rofi -show run -hide-scrollbar -theme "solarized-darker" -display-run "> "
+#
+# Rofi configuration
+#
+set $rofi rofi -hide-scrollbar -theme "solarized-darker" -display-run "> "
+bindsym $mod+d exec $rofi -show run
+bindsym $mod+Shift+d exec $rofi -show drun -show-icons
+bindsym $mod+w exec $rofi -show window
 
-# start rofi displaying only desktop applications
-bindsym $mod+Shift+d exec rofi -show drun -hide-scrollbar -show-icons -theme "solarized-darker" -display-run "> "
-
-# start rofi displaying launched applications in different workspaces
-bindsym $mod+w exec rofi -show window -hide-scrollbar -theme "solarized-darker" -display-run "> "
-
-# alternatively, you can use the cursor keys:
+#
+# i3 shortcuts
+#
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# alternatively, you can use the cursor keys:
+# --
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
+# --
+bindsym $mod+h split h # split in horizontal orientation 
+bindsym $mod+v split v # split in vertical orientation
+# --
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
+# --
 bindsym $mod+s layout stacking
 bindsym $mod+z layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
+# --
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
+# --
 bindsym $mod+space focus mode_toggle
+# --
+bindsym $mod+q focus parent # focus the parent container
+# --
+#bindsym $mod+d focus child # focus the child container
 
-# focus the parent container
-bindsym $mod+q focus parent
+#
+# Workspaces settings
+#
 
-# focus the child container
-#bindsym $mod+d focus child
-
-# Workspace names
+# Varibles
 set $workspace1 "1: "
 set $workspace9 "9: "
 set $workspace10 "0: "
 
-# switch to workspace
+# Navigation
 bindsym $mod+ampersand workspace $workspace1
 bindsym $mod+eacute workspace 2
 bindsym $mod+quotedbl workspace 3
@@ -80,8 +76,7 @@ bindsym $mod+egrave workspace 7
 bindsym $mod+underscore workspace 8
 bindsym $mod+ccedilla workspace $workspace9
 bindsym $mod+agrave workspace $workspace10
-
-# move focused container to workspace
+# --
 bindsym $mod+Shift+ampersand move container to workspace $workspace1
 bindsym $mod+Shift+eacute move container to workspace 2
 bindsym $mod+Shift+quotedbl move container to workspace 3
@@ -93,77 +88,68 @@ bindsym $mod+Shift+underscore move container to workspace 8
 bindsym $mod+Shift+ccedilla move container to workspace $workspace9
 bindsym $mod+Shift+agrave move container to workspace $workspace10
 
-# reload the configuration file
+# Reloading actions
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar
-bar{
-#    tray_output eDP-1 # Display icons only on laptop screen
-    font pango:monospace 13px
-    status_command i3blocks
-}
-
-# Setting laptop screen as primary
-exec --no-startup-id xrandr --output eDP-1 --primary
-
-# Window
+#
+# General tweaks
+#
+#for_window [class="^.*"] border pixel 1
+new_window 1pixel # Hide windows title
 hide_edge_borders both # Hide borders on the edges
 
-# Wallpaper
-#exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/landscapes/The Rock Trainier.jpg"
+exec --no-startup-id xrandr --output eDP-1 --primary # Setting laptop screen as primary
+exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/landscapes/The Rock Trainier.jpg" # Wallpaper setting
 
-# Touchpad
-exec xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap
+#
+# Hardware configuration
+#
 
-# Starting up Emacs daemon
+exec --no-startup-id xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap on touchpad
+
+#
+# i3 bar
+#
+bar{
+    font pango:monospace 13px
+    status_command i3blocks
+   #tray_output eDP-1 # Display icons only on laptop screen
+}
+
+#
+# Applications starting
+#
+
+# Daemons
 exec --no-startup-id emacs --daemon
-
-# Starting up KDE-Connect
 exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id mpd
 
-# Default settings for applications
+# Regular applets and applications
+exec --no-startup-id picom
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id dropbox
+exec --no-startup-id redshift-gtk
+
+#
+# Specific windows settings
+#
 for_window [class="Galculator"] floating enable
 for_window [class="Pavucontrol"] floating disable
 for_window [class="Gimp"] floating enable
 
-# Default applications to launch at login
-exec nm-applet &
-exec blueman-applet &
+no_focus [title="Microsoft Teams Notification"]
+for_window [title="Microsoft Teams Notification"] move absolute position 4812 px 1316 px
 
-exec /usr/lib/geoclue-2.0/demos/agent &
-exec redshift-qt &
 
-exec mpd &
-exec dropbox &
-exec pnmixer &
-exec clipit &
-exec compton &
-
+#
 # Keybindings
-bindsym $mod+a exec --no-startup-id emacsclient -nc
+#
+bindsym $mod+a exec emacsclient -nc
 bindsym Mod1+e exec thunar
-bindsym $mod+P exec /home/lturpinat/.config/i3/scripts/rofi/monitor_layout.sh
-
-#Screenshot tool
+bindsym $mod+p exec $scripts/rofi/monitor_layout.sh
 bindsym Print exec spectacle
 
 # MPC Multimedia shortcuts
@@ -177,38 +163,29 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks  # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_up     # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo /home/lturpinat/.config/i3/scripts/bright_down # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brillo -A 5     # increase screen brightness
+bindsym XF86MonBrightnessDown exec brillo -U 5 # decrease screen brightness
 
-# Assign Firefox to workspace1 and hide windows title bar (only in stacking mode)
-assign [class="firefox"] $workspace1
-for_window [class="firefox"] border pixel 1
+#
+# Modes definition
+#
 
-# Assign Evolution to workspace10 and hide windows title bar (only in stacking mode)
-assign [class="Evolution"] $workspace10
-for_window [class="Evolution"] border pixel 1
+# Window resizing
+mode "resize" {
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-# Make vscode hide windows title bar (only in stacking mode)
-for_window [class="Code"] border pixel 1
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
 
-# Make ghostwriter hide windows title bar (only in stacking mode)
-for_window [class="ghostwriter"] border pixel 1
 
-# Make QtCreator hide windows title bar (only in stacking mode)
-for_window [class="QtCreator"] border pixel 1
-
-# Make draw.io hide windows title bar (only in stacking mode)
-for_window [class="draw.io"] border pixel 1
-
-# Make teams notifications floatty
-#for_window [title="Microsoft Teams Notification"] floating enabl
-no_focus [title="Microsoft Teams Notification"]
-for_window [title="Microsoft Teams Notification"] move absolute position 4812 px 1316 px
-
-# Make Spotify hide windows title bar (only in stacking mode)
-for_window [class="Spotify"] border pixel 1
-
-# Mode to manage logout features
+# Exiting mode
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id /home/lturpinat/.config/i3/scripts/i3exit lock, mode "default"
