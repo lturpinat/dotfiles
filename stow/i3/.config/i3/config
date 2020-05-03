@@ -39,8 +39,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 # --
-bindsym $mod+h split h # split in horizontal orientation 
-bindsym $mod+v split v # split in vertical orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
 # --
 bindsym $mod+f fullscreen toggle
 # --
@@ -51,8 +51,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 # --
 bindsym $mod+space focus mode_toggle
-# --
-bindsym $mod+q focus parent # focus the parent container
+# -- (focus the parent container)
+bindsym $mod+q focus parent
 # --
 #bindsym $mod+d focus child # focus the child container
 
@@ -88,6 +88,14 @@ bindsym $mod+Shift+underscore move container to workspace 8
 bindsym $mod+Shift+ccedilla move container to workspace $workspace9
 bindsym $mod+Shift+agrave move container to workspace $workspace10
 
+# Scratchpad
+
+## Make the currently focused window a scratchpad
+bindsym $mod+Shift+twosuperior move scratchpad
+
+## Show the first scratchpad window
+bindsym $mod+twosuperior scratchpad show
+
 # Reloading actions
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -95,18 +103,25 @@ bindsym $mod+Shift+r restart
 #
 # General tweaks
 #
-#for_window [class="^.*"] border pixel 1
-new_window 1pixel # Hide windows title
-hide_edge_borders both # Hide borders on the edges
 
-exec --no-startup-id xrandr --output eDP-1 --primary # Setting laptop screen as primary
-exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/landscapes/The Rock Trainier.jpg" # Wallpaper setting
+##for_window [class="^.*"] border pixel 1
+
+## Hide windows title
+new_window 1pixel
+## Hide borders on the edges
+hide_edge_borders both
+
+## Setting laptop screen as primary
+exec --no-startup-id xrandr --output eDP-1 --primary
+## Wallpaper setting
+exec --no-startup-id feh --bg-fill "/home/lturpinat/Images/Wallpapers/landscapes/The Rock Trainier.jpg"
 
 #
 # Hardware configuration
 #
 
-exec --no-startup-id xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1 # Enable double tap on touchpad
+## Enable double tap on touchpad
+exec --no-startup-id xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1
 
 #
 # i3 bar
@@ -114,7 +129,8 @@ exec --no-startup-id xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput
 bar{
     font pango:monospace 13px
     status_command i3blocks
-   #tray_output eDP-1 # Display icons only on laptop screen
+    ## Display icons only on laptop screen
+    #tray_output eDP-1
 }
 
 #
@@ -153,18 +169,18 @@ bindsym $mod+p exec $scripts/rofi/monitor_layout.sh
 bindsym Print exec spectacle
 
 # MPC Multimedia shortcuts
-bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+10 i3blocks  # toggle play/paye
-bindsym XF86AudioNext exec mpc next && pkill -RTMIN+10 i3blocks    # next song
-bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+10 i3blocks    # prev song
+bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioNext exec mpc next && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+10 i3blocks   
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks     # increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks    # decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks  # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks  
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brillo -A 5     # increase screen brightness
-bindsym XF86MonBrightnessDown exec brillo -U 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brillo -A 5    
+bindsym XF86MonBrightnessDown exec brillo -U 5
 
 #
 # Modes definition
