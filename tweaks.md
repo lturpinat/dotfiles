@@ -27,6 +27,7 @@ Append the following to the boot parameters:
 ## Useful Polkit rules for udisk2
 
 Edit: /etc/polkit-1/rules.d/10-udisks2.rules
+(nota: permissions set on parition by udisks2 will persist unmounting)
 
 polkit.addRule(function(action, subject) {
   var YES = polkit.Result.YES;
