@@ -9,7 +9,7 @@ export EDITOR=nvim
 
 alias ls='ls --color=auto'
 
-# Start sway if logged using tty1
+# Start i3 if logged using tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  exec sway
+  startx /usr/bin/i3
 fi
