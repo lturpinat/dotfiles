@@ -42,7 +42,7 @@ font:
     style: Regular
 
 # Point size
-  size: 14.0
+  size: 10.0
 
 offset:
   x: 0
