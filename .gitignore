@@ -1,3 +1,6 @@
 stow/emacs/.emacs.d/auto-save-list
 stow/emacs/.emacs.d/savehist
 stow/mpd/.config/mpd/mpd.log
+stow/mpd/.config/mpd/mpd.db
+stow/mpd/.config/mpd/mpd.pid
+stow/ncmpcpp/.ncmpcpp/error.log
