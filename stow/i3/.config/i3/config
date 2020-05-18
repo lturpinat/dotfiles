@@ -141,6 +141,7 @@ bar{
 exec --no-startup-id emacs --daemon
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id mpd
+exec --no-startup-id /usr/bin/dunst
 
 # Regular applets and applications
 exec --no-startup-id picom
