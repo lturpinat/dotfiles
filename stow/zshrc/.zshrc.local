@@ -10,6 +10,11 @@ export EDITOR=nvim
 alias ls='ls --color=auto'
 alias dmesg='dmesg --human --color=always'
 
+# Power management commands
+
+alias shutdown='systemctl poweroff'
+alias reboot='systemctl reboot'
+
 # To enable support on remote destinations which don't have Alacritty's terminfo
 alias ssh='TERM=xterm-256color ssh'
 
