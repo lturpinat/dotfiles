@@ -24,8 +24,12 @@ bspc config merge_overlapping_monitors false
 
 ## Setting laptop screen as primary
 xrandr --output eDP-1 --primary
+
 ## Wallpaper setting
 feh --bg-fill "$HOME/Images/Wallpapers/landscapes/The Rock Trainier.jpg"
+
+## Keyboard delay & rate settings
+xset r rate 190 35
 
 #
 # Hardware configuration
@@ -42,6 +46,7 @@ emacs --daemon &
 kdeconnect-indicator &
 mpd &
 dunst &
+/usr/bin/prime-offload
 
 # Regular applets and applications
 picom &
@@ -60,6 +65,7 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a emacs state=tiled
+bspc rule -a Galculator state=floating 
 
 #
 # Polybar
