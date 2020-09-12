@@ -7,6 +7,6 @@ killall -q polybar
 
 # Launching bar
 echo "---" | tee -a /tmp/polybar1.log
-polybar -r bar1 >>/tmp/polybar1.log 2>&1 &
+polybar -r laptop >>/tmp/polybar1.log 2>&1 &
 
 echo "Bars launched..."
