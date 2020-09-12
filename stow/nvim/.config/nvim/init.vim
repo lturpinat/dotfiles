@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'preservim/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'DoxygenToolkit.vim'
 
 call vundle#end()
 
@@ -25,6 +26,9 @@ filetype plugin indent on
 
 set nocompatible
 syntax on
+filetype on
+filetype plugin on
+filetype indent on
 
 " Disable the default Vim startup message.
 set shortmess+=I
@@ -43,6 +47,13 @@ set hidden
 set ignorecase
 set smartcase
 
+" Making clipboard merging with laptop's one
+set clipboard+=unnamedplus
+
+" Configure max collumn size
+set colorcolumn=100
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
 " Enable searching as you type, rather than waiting till you press enter.
 set incsearch
 
@@ -55,16 +66,15 @@ set noerrorbells visualbell t_vb=
 " Enable mouse support
 set mouse+=a
 
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
-" ...and in insert mode
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
+" Les ; sont rarement utilises l’un a la suite de l’autre
+:imap ;; <Esc>
+:map ;; <Esc>
 
+" Managing tabs
+set tabstop=4
+set softtabstop=5
+set shiftwidth=4
+set noexpandtab
 
 packadd! dracula
 colorscheme dracula
