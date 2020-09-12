@@ -1,0 +1,2 @@
+_JAVA_OPTIONS DEFAULT='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+_JAVA_AWT_WM_NONREPARENTING DEFAULT=1
