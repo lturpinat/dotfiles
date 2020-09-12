@@ -58,6 +58,9 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
+super + {_,shift + }{h,j,k,l}
+        bspc node -{f,s} {west,south,north,east}
+
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
@@ -79,6 +82,10 @@ super + {o,i}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
+
+# Rotate tree
+super + shift + {z,a}
+	bspc node @/ -C {forward,backward}
 
 # focus or send to the given desktop
 
@@ -130,13 +137,18 @@ super + a
         emacsclient -nc
 
 super + shift + p
-        $HOME/.config/i3/scripts/rofi/monitor_layout.sh
+        $HOME/.config/bspwm/scripts/bspwm-add-monitor 0
 
 Print
 	spectacle
 
 alt + e
       thunar
+	
+# Scratchpad
+
+alt + c
+    $HOME/.config/bspwm/scripts/bspwm-toggle-visibility TelegramDesktop telegram-desktop
 
 # MPC Multimedia
 XF86AudioPlay
