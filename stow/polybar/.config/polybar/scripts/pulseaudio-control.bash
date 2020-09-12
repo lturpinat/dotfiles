@@ -29,6 +29,9 @@ SINK_NICKNAMES["alsa_output.usb-SomeManufacturer_SomeUsbSoundcard-00.analog-ster
 SINK_NICKNAMES["alsa_output.pci-0000_00_1f.3.analog-stereo"]="PC"
 SINK_NICKNAMES["alsa_output.usb-SMSL_AUDIO_SMSL_X4_DAC-00.analog-stereo"]="DAC"
 SINK_NICKNAMES["bluez_sink.A0_14_3D_CE_42_DB.a2dp_sink"]="Parrot"
+SINK_NICKNAMES["alsa_output.usb-GuangZhou_FiiO_Electronics_Co._Ltd_FiiO_Q1_FA100486-00.analog-stereo"]="Fiio Analog"
+SINK_NICKNAME["alsa_output.usb-GuangZhou_FiiO_Electronics_Co._Ltd_FiiO_Q1_FA100486-00.iec958-stereo"]="Fiio"
+SINK_NICKNAMES["alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_797_2019_09_07_01549-00.analog-stereo"]="Yeti Micro"
 
 # Environment & global constants for the script
 LANGUAGE=en_US  # Some calls depend on English outputs of pactl
