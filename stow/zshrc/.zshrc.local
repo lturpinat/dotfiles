@@ -14,6 +14,7 @@ alias dmesg='dmesg --human --color=always'
 
 alias shutdown='systemctl poweroff'
 alias reboot='systemctl reboot'
+alias freq="watch -n1 'lscpu | grep MHz'"
 
 # To enable support on remote destinations which don't have Alacritty's terminfo
 alias ssh='TERM=xterm-256color ssh'
