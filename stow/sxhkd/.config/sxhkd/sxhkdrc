@@ -69,10 +69,6 @@ super + {p,b,comma,period}
 super + {_,shift + }c
 	bspc node -f {next,prev}.local
 
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
-
 # focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
@@ -140,10 +136,13 @@ super + shift + p
         $HOME/.config/bspwm/scripts/bspwm-add-monitor 0
 
 Print
-	spectacle
+	flameshot gui
 
 alt + e
-      thunar
+	thunar
+
+super + semicolon
+	rofimoji
 	
 # Scratchpad
 
@@ -152,13 +151,16 @@ alt + c
 
 # MPC Multimedia
 XF86AudioPlay
-	mpc toggle
+	mpc -q toggle
+
+Menu
+	mpc -q toggle
 
 XF86AudioNext
-	mpc next
+	mpc -q next
 
 XF86AudioPrev
-	mpc prev
+	mpc -q prev
 
 # Pulse Audio
 
@@ -178,3 +180,7 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	brillo -U 5
 
+# Calculator
+#
+XF86Calculator
+	galculator
