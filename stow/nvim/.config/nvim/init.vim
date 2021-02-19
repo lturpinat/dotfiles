@@ -76,5 +76,12 @@ set softtabstop=5
 set shiftwidth=4
 set noexpandtab
 
+" =============================================================================
+" # Misc.
+" =============================================================================
+
+" 72 chars tab limit with mutt
+au BufRead /tmp/mutt-* set tw=72
+
 packadd! dracula
 colorscheme dracula
