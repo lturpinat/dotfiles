@@ -25,8 +25,13 @@ bspc config merge_overlapping_monitors false
 ## Setting laptop screen as primary
 xrandr --output eDP-1 --primary
 
-## Wallpaper setting
-feh --bg-fill "$HOME/Images/Wallpapers/landscapes/The Rock Trainier.jpg"
+## Wallpaper setting (10# if for octal compatibily with bash and sh)
+WALLPAPER_DIR="$HOME/Images/Wallpapers"
+if [[ $((10#$(date +"%d") % 2)) -eq 0 ]] ; then
+	feh --bg-fill "$WALLPAPER_DIR/mountains.jpg"
+else 
+	feh --bg-fill "$WALLPAPER_DIR/moondog.jpg" 
+fi
 
 ## Keyboard delay & rate settings
 xset r rate 190 35
@@ -37,23 +42,24 @@ xset r rate 190 35
 
 xinput --set-prop 'DLL07BE:01 06CB:7A13 Touchpad' 'libinput Tapping Enabled' 1
 
+#xinput --set-prop "MX Master Mouse" 324 0.3
+
 #
 # Applications starting
 #
 
 # Daemons
-emacs --daemon &
-kdeconnect-indicator &
+#emacs --daemon &
+#kdeconnect-indicator &
 mpd &
 dunst &
-/usr/bin/prime-offload
 
 # Regular applets and applications
-picom &
-nm-applet &
+#picom &
 blueman-applet &
 dropbox &
-killall -q redshift-gtk || redshift-gtk &
+#killall -q redshift-gtk || redshift-gtk &
+killall -q xflux && xflux -l 45.789 -g 3.144 &
 
 #
 # Specific applications rules
@@ -61,11 +67,13 @@ killall -q redshift-gtk || redshift-gtk &
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a firefox desktop='^1'
+bspc rule -a Claws-mail desktop='^9'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a emacs state=tiled
 bspc rule -a Galculator state=floating 
+bspc rule -a Gnome-pomodoro state=floating
 
 #
 # Polybar
