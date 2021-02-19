@@ -1,0 +1,26 @@
+#!/bin/bash
+
+function add_extend_monitor {
+	xrandr --output HDMI-1 --auto --right-of eDP-1
+
+	bspc monitor eDP-1 -d I II III IV V VI VII VIII IV
+	bspc monitor HDMI-1 -d X
+
+	polybar -r external
+}
+
+function add_mirror_monitor {
+	xrandr --output HDMI-1 --auto --mode 1920x1080
+}
+
+function remove_monitor {
+	xrandr --output HDMI-1 --off
+	
+	bspc monitor eDP-1 -d I II III IV V VI VII VIII IV X
+}
+
+case $1 in
+	0) add_extend_monitor ;; 
+	1) add_mirror_monitor ;;
+	2) remove_monitor ;;
+esac
