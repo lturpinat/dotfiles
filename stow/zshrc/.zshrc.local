@@ -15,6 +15,8 @@ alias dmesg='dmesg --human --color=always'
 alias shutdown='systemctl poweroff'
 alias reboot='systemctl reboot'
 alias freq="watch -n1 'lscpu | grep MHz'"
+alias randompwd='tr -dc "a-zA-Z0-9_#@.-" < /dev/urandom | head -c 14'
+alias randompwdtoclipboard='randompwd | xclip -selection clipboard'
 
 # To enable support on remote destinations which don't have Alacritty's terminfo
 alias ssh='TERM=xterm-256color ssh'
