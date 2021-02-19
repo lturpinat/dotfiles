@@ -1,0 +1,42 @@
+IMAPStore UCA
+Host imap.uca.fr
+Port 993
+User louis.turpinat@etu.uca.fr
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.password-store/mail/uca.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore UCA-local
+Path ~/Mail/UCA/
+Inbox ~/Mail/UCA/INBOX
+Subfolders Verbatim
+
+Channel UCA
+Master :UCA:
+Slave :UCA-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
+
+IMAPStore Gmail
+Host imap.gmail.com
+User turpinat.louis@gmail.com
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.password-store/mail/gmail.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore Gmail-local
+Path ~/Mail/Gmail
+Inbox ~/Mail/Gmail/INBOX
+Subfolders Verbatim
+
+Channel Gmail
+Master :Gmail:
+Slave :Gmail-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
