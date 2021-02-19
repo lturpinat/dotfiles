@@ -144,7 +144,6 @@ exec --no-startup-id mpd
 exec --no-startup-id /usr/bin/dunst
 
 # Regular applets and applications
-exec --no-startup-id picom
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id dropbox
