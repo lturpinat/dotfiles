@@ -1,0 +1,27 @@
+### General options
+
+set header_cache = "~/.cache/mutt"
+set mbox_type = Maildir
+
+## Personal
+
+set my_name = "Louis Turpinat"
+
+## UCA
+source "~/.config/mutt/uca"
+folder-hook $folder 'source ~/.config/mutt/uca'
+
+## Gmail
+source "~/.config/mutt/gmail"
+folder-hook $folder 'source ~/.config/mutt/gmail'
+
+## Other
+
+set sidebar_visible
+set send_charset="us-ascii:utf-8"
+set editor         = "nvim -c 'set tw=60' -c 'startinsert' -c 'set spell spelllang=fr'
+set rfc2047_parameters = yes
+set fast_reply = yes
+set mime_forward = ask-yes
+
+source colors.muttrc
